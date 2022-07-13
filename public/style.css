@@ -58,3 +58,13 @@ img {
 .item-body-tag {
     color: var(--gray);
 }
+
+.btn-delete-item {
+    padding: 8px;
+    font-size: 16px;
+    background-color: var(--secondary);
+    border: 0;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+}
