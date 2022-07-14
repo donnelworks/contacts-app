@@ -13,6 +13,14 @@ function ContactInput({ dataSubmit }) {
   const onSubmitData = (e) => {
     e.preventDefault();
     dataSubmit(form);
+    clearForm();
+  };
+
+  const clearForm = () => {
+    setForm({
+      name: "",
+      tag: "",
+    });
   };
   return (
     <div className="input-container">
