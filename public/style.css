@@ -1,0 +1,154 @@
+:root {
+    --primary: #227C7A;
+    --soft-primary: #F0F7F7;
+    --secondary: #FE6033;
+    --soft-secondary: #ffdcd3;
+    --gray: #6C7085;
+    --soft-gray: #dee1f1;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+label {
+    display: block;
+    color: var(--primary);
+    font-weight: 700;
+    margin: 5px 0;
+}
+
+input {
+    display: block;
+    width: 100%;
+    font-size: 16px;
+    padding: 8px;
+    border: solid 2px var(--soft-gray);
+    border-radius: 10px;
+    outline: none;
+}
+
+input:focus {
+    border: solid 2px var(--primary);
+}
+
+body {
+    background-color: #ffffff;
+}
+
+img {   
+    width: 100%;
+}
+
+.container {
+    max-width: 500px;
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.item-container {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    padding: 10px;
+    border: solid 1px var(--soft-gray);
+    border-radius: 10px;
+}
+
+.item-image-container img {
+    width: 60px;
+    border-radius: 50%;
+}
+
+.item-body-container {
+    margin-left: 10px;
+    flex: 1;
+}
+
+.header {
+    display: flex;
+    /* align-items: center; */
+    padding: 32px 0;
+  }
+
+.header .title {
+    flex: 1;
+  }
+
+.title {
+    color: var(--primary);
+    margin-bottom: 20px;
+}
+
+.subtitle {
+    color: var(--gray);
+}
+
+.item-body-name {
+    color: var(--primary);
+}
+
+.item-body-tag {
+    color: var(--gray);
+}
+
+.btn-delete-item {
+    padding: 8px;
+    font-size: 16px;
+    background-color: var(--secondary);
+    border: 0;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+}
+
+.input-container {
+    margin: 10px 0;
+    padding: 10px;
+    border: solid 1px var(--soft-gray);
+    border-radius: 10px;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 10px 0;
+    margin: 10px 0;
+    font-size: 16px;
+    background-color: var(--primary);
+    border: 0;
+    border-radius: 10px;
+    font-weight: 700;
+    color: white;
+    cursor: pointer;
+}
+
+.navigation ul li {
+    display: inline-block;
+    padding: 10px;
+  }
+   
+  .navigation ul li a {
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 30px;
+    color: var(--primary);
+  }
+   
+  .navigation ul li a:hover {
+    text-decoration: underline;
+    color: var(--secondary);
+  }
+
+  .search-bar {
+    display: block;
+    width: 100%;
+    margin: 16px 0;
+    padding: 12px;
+    background-color: transparent;
+    border: 2px solid var(--gray);
+    border-radius: 4px;
+  }
