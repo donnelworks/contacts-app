@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import ContactList from "../components/ContactList";
 import SearchBar from "../components/SearchBar";
-import { getContacts, deleteContact } from "../data";
+import { LocaleContext } from "../context/LocaleContext";
+import { getContacts, deleteContact } from "../utils/api";
 
 function HomePageWrapper() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -18,8 +19,9 @@ function HomePageWrapper() {
 }
 
 const HomePage = ({ defaultKeyword, keywordChange }) => {
-  let [contacts, setContacts] = useState(getContacts());
+  let [contacts, setContacts] = useState([]);
   const [keyword, setKeyword] = useState(defaultKeyword || "");
+  const { locale } = useContext(LocaleContext);
 
   contacts = contacts.filter((contact) => {
     return contact.name
@@ -28,9 +30,19 @@ const HomePage = ({ defaultKeyword, keywordChange }) => {
       .includes(keyword.toString().toLowerCase());
   });
 
-  function onDeleteHandler(id) {
-    deleteContact(id);
-    setContacts(getContacts());
+  useEffect(() => {
+    loadContacts();
+  }, []);
+
+  async function loadContacts() {
+    const { data } = await getContacts();
+    setContacts(data);
+  }
+
+  async function onDeleteHandler(id) {
+    await deleteContact(id);
+    const { data } = await getContacts();
+    setContacts(data);
   }
 
   function onKeywordChangeHandler(val) {
@@ -44,7 +56,9 @@ const HomePage = ({ defaultKeyword, keywordChange }) => {
         keyword={keyword}
         keywordChange={(val) => onKeywordChangeHandler(val)}
       />
-      <h2 className="subtitle">Daftar Kontak</h2>
+      <h2 className="subtitle">
+        {locale === "id" ? "Daftar Kontak" : "Contacts List"}
+      </h2>
       <ContactList contacts={contacts} onDelete={(id) => onDeleteHandler(id)} />
     </section>
   );

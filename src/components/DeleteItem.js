@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { BiTrash } from "react-icons/bi";
 
 function DeleteItem({ id, onDelete }) {
   return (
@@ -11,7 +10,7 @@ function DeleteItem({ id, onDelete }) {
 }
 
 DeleteItem.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   onDelete: PropTypes.func.isRequired,
 };
 

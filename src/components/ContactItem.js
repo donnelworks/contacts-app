@@ -4,10 +4,10 @@ import { ContactItemBody as ItemBody } from "./ContactItemBody";
 import DeleteItem from "./DeleteItem";
 import PropTypes from "prop-types";
 
-function ContactItem({ img, name, tag, id, onDelete }) {
+function ContactItem({ imageUrl, name, tag, id, onDelete }) {
   return (
     <div className="item-container">
-      <ItemImage img={img} />
+      <ItemImage img={imageUrl} />
       <ItemBody name={name} tag={tag} />
       <DeleteItem id={id} onDelete={onDelete} />
     </div>
@@ -16,10 +16,10 @@ function ContactItem({ img, name, tag, id, onDelete }) {
 
 // Prop Validation
 ContactItem.propTypes = {
-  img: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   tag: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   onDelete: PropTypes.func.isRequired,
 };
 

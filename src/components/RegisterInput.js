@@ -2,9 +2,9 @@ import React, { useContext, useState } from "react";
 import PropTypes from "prop-types";
 import { LocaleContext } from "../context/LocaleContext";
 
-function ContactInput({ dataSubmit }) {
+const RegisterInput = ({ dataSubmit }) => {
   const { locale } = useContext(LocaleContext);
-  const [form, setForm] = useState({ name: "", tag: "" });
+  const [form, setForm] = useState({ name: "", email: "", password: "" });
 
   const onChangeText = (val, input) => {
     setForm({
@@ -16,43 +16,41 @@ function ContactInput({ dataSubmit }) {
   const onSubmitData = (e) => {
     e.preventDefault();
     dataSubmit(form);
-    clearForm();
-  };
-
-  const clearForm = () => {
-    setForm({
-      name: "",
-      tag: "",
-    });
   };
   return (
     <div className="input-container">
       <form onSubmit={(e) => onSubmitData(e)}>
-        <label htmlFor="name">{locale === "id" ? "Nama" : "Name"}</label>
+        <label htmlFor="name">{locale === "id" ? "Nama" : "Name"} </label>
         <input
           type="text"
           id="name"
           value={form.name}
           onChange={(val) => onChangeText(val, "name")}
         />
-        <label htmlFor="tag">Tag</label>
+        <label htmlFor="email">Email</label>
         <input
-          type="text"
-          id="tag"
-          value={form.tag}
-          onChange={(val) => onChangeText(val, "tag")}
+          type="email"
+          id="email"
+          value={form.email}
+          onChange={(val) => onChangeText(val, "email")}
+        />
+        <label htmlFor="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          value={form.password}
+          onChange={(val) => onChangeText(val, "password")}
         />
         <button type="submit" className="btn-submit">
-          {locale === "id" ? "Simpan" : "Save"}
+          {locale === "id" ? "Buat akun" : "Create account"}
         </button>
       </form>
     </div>
   );
-}
+};
 
-// Prop Vavlidation
-ContactInput.propTypes = {
+RegisterInput.propTypes = {
   dataSubmit: PropTypes.func.isRequired,
 };
 
-export default ContactInput;
+export default RegisterInput;
